@@ -1,0 +1,25 @@
+{
+  "name": "sipuli",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/2605697/sipuli#readme",
+  "bugs": {
+    "url": "https://github.com/2605697/sipuli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2605697/sipuli.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "rootDir": "./src",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "electron": "^44.3.0"
+  }
+}
