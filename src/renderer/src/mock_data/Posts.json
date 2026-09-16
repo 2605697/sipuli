@@ -1,0 +1,28 @@
+{
+  "Posts": [
+    {
+      "username": "User_5_numbers",
+      "text": "Trying out this new social media"
+    },
+    {
+      "username": "Another_user",
+      "text": "Has anyone seen my phone Its red"
+    },
+    {
+      "username": "User2",
+      "text": "Cat tax : ",
+      "attachment": {
+        "type": "img",
+        "src": "src/assets/PostImages/IMG_20260525_220959.jpg"
+      }
+    },
+    {
+      "username": "THe_user",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "username": "My username",
+      "text": "You are now looking at the latest bog water winner."
+    }
+  ]
+}

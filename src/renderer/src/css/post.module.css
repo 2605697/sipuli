@@ -1,0 +1,56 @@
+.body{
+  display: grid;
+  grid-template-areas:
+  "user user date"
+  "txt txt txt"
+  "attach attach attach"
+  "none none translate";
+  grid-template-columns: 1fr 5fr 1fr;
+
+  color: white;
+  background: var(--bg-color);
+  padding: 0.5em;
+  border: 1px solid var(--border-color);
+
+  border-radius: 3px;
+  margin: 5px;
+
+}
+
+.attachment{
+  grid-area: attach;
+  padding: 5px;
+  border: 1px solid var(--border-color);
+  border-width: 0px 0px 1px 0px;
+}
+
+
+.user{
+  grid-area: user;
+  padding: 5px;
+}
+
+.text{
+  grid-area: txt;
+  border: 1px solid var(--border-color);
+  border-width: 1px 0px 0px 0px;
+  padding: 5px;
+}
+
+.translate{
+  grid-area: translate;
+  text-align: end ;
+  padding: 5px;
+  color: var(--link);
+}
+
+.translate:hover{
+
+  color: var(--link-hover);
+}
+
+.date{
+  grid-area: date;
+  text-align: end ;
+  padding: 5px;
+}

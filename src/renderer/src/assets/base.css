@@ -29,7 +29,14 @@
   --color-background-mute: var(--ev-c-black-mute);
 
   --color-text: var(--ev-c-text-1);
+
+  --border-color: #924089;
+  --bg-color: #2A0126;
+
+  --link: var(--border-color)
+  --link-hover: hsl(from var(--border-color) h s calc(l * 0.5))
 }
+
 
 *,
 *::before,
