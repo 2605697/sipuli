@@ -8,12 +8,12 @@ import Sidebar from './components/Sidebar'
 import Feed from './components/Feed'
 import App from './App'
 
+// TODO: merge div here with the root div / or even use body
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div>
-      <Sidebar></Sidebar>
+    <div style={{display:"flex",height:"100dvh",alignItems:"stretch"}}>
+      <Sidebar/>
       <Feed></Feed>
-      <Sidebar></Sidebar>
     </div>
   </StrictMode>
 )
