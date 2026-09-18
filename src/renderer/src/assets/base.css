@@ -29,7 +29,27 @@
   --color-background-mute: var(--ev-c-black-mute);
 
   --color-text: var(--ev-c-text-1);
+
+  --post-bg: #2A0126;
+  --post-border: #924089;
+
+  --sidebar-bg: #f001;
+  --sidebar-border: #f008;
+  --sidebar-component-bg: #f009;
+  --sidebar-component-hover: #f00b;
+  --new-post-bg:#161616;
+  --new-post-border: #333;
+  --new-post-field-bg:#000;
+  --new-post-submit-bg:#f008;
+
+  --close-bg:#fff2;
+  --close-hover:#fff3;
+
+
+  --link: var(--border-color)
+  --link-hover: hsl(from var(--border-color) h s calc(l * 0.5))
 }
+
 
 *,
 *::before,

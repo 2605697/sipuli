@@ -1,0 +1,10 @@
+.feed_style{
+  display: block;
+  width: 50%;
+  overflow: scroll;
+  padding: 2px;
+  height: 100vh;
+
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
