@@ -1,26 +1,56 @@
-import { useState, useRef } from "react";
-import classes from "../css/sidebar.module.css";
+import { useState, useRef } from 'react'
+import classes from '../css/sidebar.module.css'
 
 function Sidebar({ }) {
-  let dialog = useRef(null);
-  let open  = () => dialog.current.showModal();
-  let close = () => dialog.current.close();
-  let [name, setName] = useState("");
+  let newPostDialog = useRef(null)
+  let openNewPost = () => newPostDialog.current.showModal()
+  let closeNewPost = () => newPostDialog.current.close()
+
+  let settingsDialog = useRef(null)
+  let openSettings = () => settingsDialog.current.showModal()
+  let closeSettings = () => settingsDialog.current.close()
+
+  let [name, setName] = useState('')
   return (
     <div className={classes.root}>
-      <div style={{background:"#0000"/*placeholder element*/}}>
-      </div>
-      <button onClick={open} className={classes.newpost}>New post</button>
-      <dialog className={classes.modal} ref={dialog} onClick={ev => {
-        // Close when clicking outside the modal
-        if (ev.target == dialog.current) close();
-      }}>
+      <div style={{ background: '#0000' /*placeholder element*/ }}></div>
+      <button onClick={openSettings} className={classes.barComponent}>
+        Settings
+      </button>
+
+      <button onClick={openNewPost} className={classes.barComponent}>
+        New post
+      </button>
+
+      <dialog
+        className={classes.modal}
+        ref={newPostDialog}
+        onClick={(ev) => {
+          // Close when clicking outside the modal
+          if (ev.target == newPostDialog.current) closeSettings()
+        }}
+      ></dialog>
+
+      <dialog
+        className={classes.modal}
+        ref={newPostDialog}
+        onClick={(ev) => {
+          // Close when clicking outside the modal
+          if (ev.target == newPostDialog.current) closeNewPost()
+        }}
+      >
         <form method="dialog">
           <div className={classes.header}>
-            <span><input placeholder="Identity code" onChange={ev => {
-              setName(ev.target.value)
-              console.log(ev);
-            }}/> ({name})</span>
+            <span>
+              <input
+                placeholder="Identity code"
+                onChange={(ev) => {
+                  setName(ev.target.value)
+                  console.log(ev)
+                }}
+              />{' '}
+              ({name})
+            </span>
             <button className={classes.close}>X</button>
           </div>
           <textarea rows="10"></textarea>
@@ -31,7 +61,7 @@ function Sidebar({ }) {
         </form>
       </dialog>
     </div>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

@@ -8,9 +8,9 @@
   grid-template-columns: 1fr 5fr 1fr;
 
   color: white;
-  background: var(--bg-color);
+  background: var(--post-bg);
   padding: 0.5em;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--post-border);
 
   border-radius: 3px;
   margin: 5px;
@@ -20,10 +20,9 @@
 .attachment{
   grid-area: attach;
   padding: 5px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--post-border);
   border-width: 0px 0px 1px 0px;
 }
-
 
 .user{
   grid-area: user;
@@ -32,7 +31,7 @@
 
 .text{
   grid-area: txt;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--post-border);
   border-width: 1px 0px 0px 0px;
   padding: 5px;
 }
