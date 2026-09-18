@@ -1,6 +1,22 @@
 {
   "Posts": [
     {
+      "username": "tallImageTester",
+      "text": "react",
+      "attachment": {
+          "type": "img",
+          "src": "src/assets/PostImages/tall.png"
+      }
+    },
+    {
+      "username": "wideImageTester",
+      "text": "react",
+      "attachment": {
+          "type": "img",
+          "src": "src/assets/PostImages/wide.jpg"
+      }
+    },
+    {
       "username": "User_5_numbers",
       "text": "Trying out this new social media"
     },
