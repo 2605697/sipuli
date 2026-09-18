@@ -29,6 +29,10 @@
   padding: 0;
 }
 
+.modal::backdrop {
+  background: #0006;
+}
+
 .modal > form {
   color: white;
   display: flex;
@@ -57,7 +61,7 @@
   background: #fff3;
 }
 
-.modal > form > textarea {
+.content {
   resize: none;
 }
 
@@ -73,4 +77,20 @@
   border: 1px solid black;
   border-radius: 4px;
   background: #f008;
+}
+
+.code {
+  width: 6rem;
+}
+
+.code, .content {
+  color: white;
+  background: #333;
+  padding: .4rem;
+  border: none;
+}
+
+/* TODO: make this global */
+.code:focus, .content:focus {
+  outline: 2px solid var(--border-color);
 }

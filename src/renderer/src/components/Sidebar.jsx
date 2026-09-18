@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import classes from "../css/sidebar.module.css";
+import { getIdentity } from "../identity.js";
 
 function Sidebar({ }) {
   let dialog = useRef(null);
@@ -17,13 +18,17 @@ function Sidebar({ }) {
       }}>
         <form method="dialog">
           <div className={classes.header}>
-            <span><input placeholder="Identity code" onChange={ev => {
-              setName(ev.target.value)
-              console.log(ev);
-            }}/> ({name})</span>
+            <span><input className={classes.code} type="password"
+                         placeholder="Identity code"
+                         onChange={ev => {
+              if (ev.target.value.length >= 4)
+                setName(getIdentity(ev.target.value))
+              else
+                setName("")
+            }}/> ({name || "Code must be at least 4 characters"})</span>
             <button className={classes.close}>X</button>
           </div>
-          <textarea rows="10"></textarea>
+          <textarea className={classes.content} rows="10"></textarea>
           <div className={classes.actions}>
             <span></span>
             <button className={classes.submitpost}>Post</button>

@@ -1,5 +1,5 @@
 import TextRenderer from "./TextRenderer"
-import Attachment from "./Attachements"
+import Attachment from "./Attachments"
 import classes from "../css/post.module.css"
 
 function Post({ content: { username, text, attachment } }) {
