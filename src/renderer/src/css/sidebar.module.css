@@ -1,8 +1,8 @@
 .root {
   margin: .4rem;
-  border: 1px solid var(--sidebar-border);
+  border: 1px solid var(--border);
   border-radius: 5px;
-  background: var(--sidebar-bg);
+  background: var(--background);
   width: 15rem;
   /* TODO: fix height (using main flexbox?) */
   display: flex;
@@ -12,14 +12,14 @@
 
 .barComponent {
   height: 3em;
-  background: var(--sidebar-component-bg);
+  background: var(--highlight);
   color: white;
   border: none;
   font-weight: bold;
 }
 
 .barComponent:hover {
-  background: var(--sidebar-component-hover);
+  background: var(--highlight-bright);
 }
 
 .modal {
@@ -27,10 +27,6 @@
   margin: auto; /* center, why not default here??? */
   width: 30rem;
   padding: 0;
-}
-
-.modal::backdrop {
-  background: #0006;
 }
 
 .modal > form {
@@ -56,23 +52,24 @@
   border: 1px solid black;
   border-radius: 4px;
   background: var(--close-bg);
-  border: 1px solid var(--new-post-border);
+  border: 1px solid var(--highlight-border);
 }
 
 .close:hover {
   background: var(--close-hover);
 }
 
-.content {
+.modal > form > textarea {
   resize: none;
   background-color: var(--new-post-field-bg);
-  border: 1px solid var(--new-post-border);
+  border: 1px solid var(--highlight-border);
+  color: var(--text-color);
 }
 
 .modal > form> div> span> input {
   background:var(--new-post-field-bg);
   border: 1px solid var(--new-post-border);
-  color:white;
+  color: var(--text-color);
 }
 
 .actions {
@@ -86,21 +83,11 @@
   height: 2rem;
   border: 1px solid black;
   border-radius: 4px;
-  background: var(--new-post-submit-bg);
+  background: var(--highlight);
+  border: 1px solid var(--highlight-border);
 }
 
-.code {
-  width: 6rem;
-}
 
-.code, .content {
-  color: white;
-  background: #333;
-  padding: .4rem;
-  border: none;
-}
-
-/* TODO: make this global */
-.code:focus, .content:focus {
-  outline: 2px solid var(--border-color);
+.submitpost:hover {
+  background: var(--highlight-bright);
 }

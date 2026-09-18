@@ -30,6 +30,14 @@
 
   --color-text: var(--ev-c-text-1);
 
+  --background: #161616;
+  --border: #333;
+
+  --highlight: #924089;
+  --highlight-bright: hsl(from var(--highlight) h s calc(l * 1.4));
+  --highlight-border: hsl(from var(--highlight) h s calc(l * 1.5));
+  --highlight-bg: hsl(from var(--highlight) h s calc(l * 0.2));
+
   --post-bg: #2A0126;
   --post-border: #924089;
 

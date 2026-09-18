@@ -8,7 +8,7 @@
   grid-template-columns: 1fr 5fr 1fr;
 
   color: white;
-  background: var(--post-bg);
+  background: var(--highlight-bg);
   padding: 0.5em;
   border: 1px solid var(--post-border);
 
