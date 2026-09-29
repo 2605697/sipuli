@@ -6,8 +6,8 @@ import { getIdentity } from "../identity.js";
 // TODO: eventually the data will just contain public identities
 Posts.forEach(p => p.username = getIdentity(p.username));
 
-function Feed({ }) {
-  return (<>
+function Feed() {
+  return (
     <div className={classes.feed_style}>
       {
         Posts.map((post, index) => {
@@ -17,7 +17,7 @@ function Feed({ }) {
         })
       }
     </div>
-  </>)
+  )
 }
 
 export default Feed;
