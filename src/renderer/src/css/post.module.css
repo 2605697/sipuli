@@ -17,6 +17,11 @@
 
 }
 
+.video{
+  width: 100%;
+  height: 250px;
+}
+
 .attachment{
   grid-area: attach;
   padding: 5px;
