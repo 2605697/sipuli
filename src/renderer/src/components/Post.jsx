@@ -13,7 +13,7 @@ function Post({ content: { username, text, attachment } }) {
         {attachment != undefined ? (
           <Attachment attachment={attachment} className={classes.attachment}><div>inner</div></Attachment>
         ) : (<div className={classes.attachment}></div>)}
-        <a className={classes.translate} href="https://www.youtube.com/watch?v=XfELJU1mRMg">translate</a>
+        <a className={classes.translate} href={`https://translate.google.com/?sl=auto&tl=en&op=translate&text=${encodeURIComponent(text)}`} target="_blank" rel="noreferrer">translate</a>
       </div>
     </>
   );
