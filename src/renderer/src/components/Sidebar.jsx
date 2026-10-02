@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import classes from "../css/sidebar.module.css";
 import { getIdentity } from "../identity.js";
+import { OptionsContext } from "./Options.jsx";
 
 
 function Sidebar({ }) {
@@ -13,6 +14,13 @@ function Sidebar({ }) {
   let closeSettings = () => settingsDialog.current.close()
 
   let [name, setName] = useState('')
+  const { state, update } = useContext(OptionsContext);
+
+
+  function toggleAutoTranslate() {
+    update({ auto_translate: !state.auto_translate });
+  }
+
   return (
     <div className={classes.root}>
       <div style={{ background: '#0000' /*placeholder element*/ }}></div>
@@ -26,12 +34,32 @@ function Sidebar({ }) {
 
       <dialog
         className={classes.modal}
-        ref={newPostDialog}
+        ref={settingsDialog}
         onClick={(ev) => {
           // Close when clicking outside the modal
           if (ev.target == newPostDialog.current) closeSettings()
         }}
-      ></dialog>
+      >
+        <form method="dialog">
+          <div className={classes.header}>
+            <button className={classes.close}>X</button>
+          </div>
+          <span>Auto translate posts : <label className={classes.switch}>
+            <input type="checkbox" value={state.auto_translate} onClick={toggleAutoTranslate}></input>
+            <span className={classes.slider}></span>
+          </label></span>
+          <span><label htmlFor="lang">Preferd language : </label>
+            <select name="lang" id="lang">
+              <option value="en">English (en)</option>
+              <option value="fi">Suomi (fi)</option>
+            </select>
+          </span>
+          <div className={classes.actions}>
+            <span></span>
+            <button className={classes.submitpost}>Save</button>
+          </div>
+        </form>
+      </dialog>
 
       <dialog
         className={classes.modal}
@@ -60,7 +88,7 @@ function Sidebar({ }) {
           </div>
         </form>
       </dialog>
-    </div>
+    </div >
   )
 }
 
