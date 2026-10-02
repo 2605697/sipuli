@@ -1,7 +1,6 @@
 .feed_style{
   display: block;
-  columns: 30em auto;
-  width: 75%;
+  width: 50%;
   overflow: scroll;
   padding: 2px;
 

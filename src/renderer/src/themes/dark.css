@@ -1,0 +1,19 @@
+html[data-theme='dark'] {
+  --body-background: #1b1b1f;
+  --background: #161616;
+  --text-color: rgba(255, 255, 245, 0.86);
+  --on-highlight: #fff;
+
+  --highlight: #924089;
+  --highlight-bg: hsl(from var(--highlight) h s calc(l * 0.2));
+  --post-border: #924089;
+  --sidebar-border: #924089;
+  --link: #924089;
+
+  --new-post-bg: #161616;
+  --new-post-border: #333;
+  --new-post-field-bg: #000;
+
+  --close-bg: #fff2;
+  --close-hover: #fff3;
+}

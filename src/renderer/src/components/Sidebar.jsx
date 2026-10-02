@@ -1,8 +1,8 @@
-import { useState, useRef, useContext } from "react";
-import classes from "../css/sidebar.module.css";
-import { getIdentity } from "../identity.js";
-import { OptionsContext } from "./Options.jsx";
-
+import { useState, useRef, useContext } from 'react'
+import classes from '../css/sidebar.module.css'
+import { getIdentity } from '../identity.js'
+import { OptionsContext } from './Options.jsx'
+import { themes } from '../themes'
 
 function Sidebar({ }) {
   let newPostDialog = useRef(null)
@@ -14,11 +14,10 @@ function Sidebar({ }) {
   let closeSettings = () => settingsDialog.current.close()
 
   let [name, setName] = useState('')
-  const { state, update } = useContext(OptionsContext);
-
+  const { state, update } = useContext(OptionsContext)
 
   function toggleAutoTranslate() {
-    update({ auto_translate: !state.auto_translate });
+    update({ auto_translate: !state.auto_translate })
   }
 
   return (
@@ -44,11 +43,34 @@ function Sidebar({ }) {
           <div className={classes.header}>
             <button className={classes.close}>X</button>
           </div>
-          <span>Auto translate posts : <label className={classes.switch}>
-            <input type="checkbox" value={state.auto_translate} onClick={toggleAutoTranslate}></input>
-            <span className={classes.slider}></span>
-          </label></span>
-          <span><label htmlFor="lang">Preferd language : </label>
+          <span>
+            Auto translate posts :{' '}
+            <label className={classes.switch}>
+              <input
+                type="checkbox"
+                value={state.auto_translate}
+                onClick={toggleAutoTranslate}
+              ></input>
+              <span className={classes.slider}></span>
+            </label>
+          </span>
+          <span>
+            <label htmlFor="theme">Theme : </label>
+            <select
+              name="theme"
+              id="theme"
+              value={state.theme}
+              onChange={(ev) => update({ theme: ev.target.value })}
+            >
+              {themes.map(({ id, label }) => (
+                <option key={id} value={id}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </span>
+          <span>
+            <label htmlFor="lang">Preferd language : </label>
             <select name="lang" id="lang">
               <option value="en">English (en)</option>
               <option value="fi">Suomi (fi)</option>
@@ -71,14 +93,18 @@ function Sidebar({ }) {
       >
         <form method="dialog">
           <div className={classes.header}>
-            <span><input className={classes.code} type="password"
-              placeholder="Identity code"
-              onChange={ev => {
-                if (ev.target.value.length >= 4)
-                  setName(getIdentity(ev.target.value))
-                else
-                  setName("")
-              }} /> ({name || "Code must be at least 4 characters"})</span>
+            <span>
+              <input
+                className={classes.code}
+                type="password"
+                placeholder="Identity code"
+                onChange={(ev) => {
+                  if (ev.target.value.length >= 4) setName(getIdentity(ev.target.value))
+                  else setName('')
+                }}
+              />{' '}
+              ({name || 'Code must be at least 4 characters'})
+            </span>
             <button className={classes.close}>X</button>
           </div>
           <textarea className={classes.content} rows="10"></textarea>
@@ -88,7 +114,7 @@ function Sidebar({ }) {
           </div>
         </form>
       </dialog>
-    </div >
+    </div>
   )
 }
 

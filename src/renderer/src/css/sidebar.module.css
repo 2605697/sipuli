@@ -1,6 +1,6 @@
 .root {
   margin: .4rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--sidebar-border);
   border-radius: 5px;
   background: var(--background);
   width: 15rem;
@@ -13,7 +13,7 @@
 .barComponent {
   height: 3em;
   background: var(--highlight);
-  color: white;
+  color: var(--on-highlight);
   border: none;
   font-weight: bold;
 }
@@ -30,7 +30,7 @@
 }
 
 .modal > form {
-  color: white;
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -46,10 +46,9 @@
 }
 
 .close {
-  color: white;
+  color: var(--text-color);
   height: 2rem;
   width: 2rem;
-  border: 1px solid black;
   border-radius: 4px;
   background: var(--close-bg);
   border: 1px solid var(--highlight-border);
@@ -79,9 +78,8 @@
 
 .submitpost {
   font-weight: bold;
-  color: white;
+  color: var(--on-highlight);
   height: 2rem;
-  border: 1px solid black;
   border-radius: 4px;
   background: var(--highlight);
   border: 1px solid var(--highlight-border);
@@ -128,7 +126,7 @@
   width: 1em;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--on-highlight);
   -webkit-transition: .4s;
   transition: .4s;
 }

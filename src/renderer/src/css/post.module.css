@@ -7,7 +7,7 @@
   "none translate translate";
   grid-template-columns: 1fr 5fr 1fr;
 
-  color: white;
+  color: var(--text-color);
   background: var(--highlight-bg);
   padding: 0.5em;
   border: 1px solid var(--post-border);
