@@ -47,8 +47,8 @@ function Post({ content: { username, text, attachment } }) {
         {attachment != undefined ? (
           <Attachment attachment={attachment} className={classes.attachment}><div>inner</div></Attachment>
         ) : (<div className={classes.attachment}></div>)}
-        <a className={classes.translate} href={`https://translate.google.com/?sl=auto&tl=en&op=translate&text=${encodeURIComponent(text)}`} target="_blank" rel="noreferrer">translate</a>
-      </div>
+        <a className={classes.translate} onClick={toggle_translate}>{(state.auto_translate ? !useTranslated : useTranslated) ? "View original" : "Translate(using google translate)"} </a>
+      </div >
     </>
   );
 }
