@@ -21,43 +21,67 @@
   --ev-button-alt-hover-border: transparent;
   --ev-button-alt-hover-text: var(--ev-c-text-1);
   --ev-button-alt-hover-bg: var(--ev-c-gray-2);
-}
-
-:root {
-  --color-background: var(--ev-c-black);
-  --color-background-soft: var(--ev-c-black-soft);
-  --color-background-mute: var(--ev-c-black-mute);
-
-  --color-text: var(--ev-c-text-1);
-
-  --background: #161616;
-  --border: #333;
 
   --highlight: #924089;
-  --highlight-bright: hsl(from var(--highlight) h s calc(l * 1.4));
+  --highlight-bright: hsl(from var(--highlight) h calc(s / 1.5) calc(l * 2));
   --highlight-border: hsl(from var(--highlight) h s calc(l * 1.5));
   --highlight-bg: hsl(from var(--highlight) h s calc(l * 0.2));
-
-  --post-bg: #2A0126;
-  --post-border: #924089;
-
-  --sidebar-bg: #f001;
-  --sidebar-border: #f008;
-  --sidebar-component-bg: #f009;
-  --sidebar-component-hover: #f00b;
-  --new-post-bg:#161616;
-  --new-post-border: #333;
-  --new-post-field-bg:#000;
-  --new-post-submit-bg:#f008;
-
-  --close-bg:#fff2;
-  --close-hover:#fff3;
-
-
-  --link: var(--border-color)
-  --link-hover: hsl(from var(--border-color) h s calc(l * 0.5))
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--ev-c-black);
+    --color-background-soft: var(--ev-c-black-soft);
+    --color-background-mute: var(--ev-c-black-mute);
+
+    --color-text: var(--ev-c-text-1);
+
+    --background: #161616;
+    --border: #333;
+
+    --post-bg: #2A0126;
+    --post-border: #924089;
+
+
+    --new-post-bg:var(--background);
+    --new-post-border: var(--border);
+    --new-post-field-bg:#000;
+    --new-post-submit-bg:#f008;
+
+    --close-bg:#fff2;
+    --close-hover:#fff3;
+
+    --link: var(--border-color)
+    --link-hover: hsl(from var(--border-color) h s calc(l * 0.5))
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: var(--ev-c-white);
+
+    --color-text: #2A0126;
+
+    --background: #d6d6d6;
+    --border: #777;
+
+    --post-bg: var(--highlight-bright);
+    --post-border: var(--highlight-bg);
+
+
+    --new-post-bg:var(--background);
+    --new-post-border: var(--border);
+    --new-post-field-bg: var(--border);
+    --new-post-submit-bg:#f008;
+
+    --close-bg:#fff2;
+    --close-hover:#fff3;
+
+    --link: var(--border-color)
+    --link-hover: hsl(from var(--border-color) h s calc(l * 0.5))
+  }
+}
 
 *,
 *::before,
