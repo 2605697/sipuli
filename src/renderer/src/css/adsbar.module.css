@@ -23,8 +23,8 @@
   height: 2.5rem;
   padding: 0 1rem;
   border-radius: .4rem;
-  background: #161616;
-  border: 1px solid #333;
+  background: var(--background);
+  border: 1px solid var(--sidebar-border);
   color: #eee;
 }
 
@@ -38,7 +38,7 @@
   display: flex;
   flex-direction: column;
   background: var(--background);
-  border: 1px solid var(--border);
+  border: 1px solid var(--sidebar-border);
   border-radius: 5px;
   overflow: hidden;
 }
@@ -47,15 +47,15 @@
   margin: 0;
   padding: .6rem .8rem;
   font-size: 1.2rem;
-  color: white;
+  color: var(--color-text);
 }
 
 .event {
   display: flex;
   flex-direction: column;
   padding: .6rem .8rem;
-  border-top: 1px solid var(--border);
-  color: white;
+  border-top: 1px solid var(--sidebar-border);
+  color: var(--color-text);
 }
 
 .eventdate,
@@ -69,7 +69,7 @@
   flex-direction: column;
   gap: .4rem;
   padding: .6rem .8rem;
-  color: white;
+  color: var(--color-text);
   text-decoration: none;
 }
 

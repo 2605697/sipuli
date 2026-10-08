@@ -4,3 +4,8 @@
   object-fit: contain;
   max-height: 40vh;
 }
+
+.class{
+  object-fit: contain;
+  justifyContent: 'center';
+}
