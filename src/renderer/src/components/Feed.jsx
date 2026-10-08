@@ -2,25 +2,15 @@ import { Posts } from "../mock_data/Posts.json";
 import Post from "./Post";
 import classes from "../css/feed.module.css";
 import { getIdentity } from "../identity.js";
-import { useEffect, useState } from "react";
 
 // TODO: eventually the data will just contain public identities
 Posts.forEach(p => p.username = getIdentity(p.username));
 
 function Feed() {
-  let [posts, setPosts] = useState(Posts);
-
-  useEffect(() => {
-    if (JSON.stringify(Posts) !== JSON.stringify(posts)) {
-      console.log(posts);
-      setPosts(Posts)
-    }
-  }, Posts);
-
   return (
     <div className={classes.feed_style}>
       {
-        posts.map((post, index) => {
+        Posts.map((post, index) => {
           return (
             <Post key={index} content={post}></Post>
           )

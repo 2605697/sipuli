@@ -1,5 +1,4 @@
 import { useState, useRef, useContext } from "react";
-import { Posts } from "../mock_data/Posts.json";
 import classes from "../css/sidebar.module.css";
 import { getIdentity } from "../identity.js";
 import { OptionsContext } from "./Options.jsx";
@@ -20,14 +19,6 @@ function Sidebar({ }) {
 
   function toggleAutoTranslate() {
     update({ auto_translate: !state.auto_translate });
-  }
-
-
-
-  function addPost() {
-    const form = newPostDialog.current.children[0];
-    Posts.push({ username: form.elements['username'].value, text: form.elements['text'].value });
-    console.log(Posts)
   }
 
   return (
@@ -78,23 +69,22 @@ function Sidebar({ }) {
           if (ev.target == newPostDialog.current) closeNewPost()
         }}
       >
-        <form onSubmit={addPost} method="dialog">
+        <form method="dialog">
           <div className={classes.header}>
-            <span>
-              <input id="username" className={classes.code} type="password"
-                placeholder="Identity code"
-                onChange={ev => {
-                  if (ev.target.value.length >= 4)
-                    setName(getIdentity(ev.target.value))
-                  else
-                    setName("")
-                }} /> ({name || "Code must be at least 4 characters"})</span>
+            <span><input className={classes.code} type="password"
+              placeholder="Identity code"
+              onChange={ev => {
+                if (ev.target.value.length >= 4)
+                  setName(getIdentity(ev.target.value))
+                else
+                  setName("")
+              }} /> ({name || "Code must be at least 4 characters"})</span>
             <button className={classes.close}>X</button>
           </div>
-          <textarea id="text" className={classes.content} rows="10"></textarea>
+          <textarea className={classes.content} rows="10"></textarea>
           <div className={classes.actions}>
             <span></span>
-            <input type="submit" id="post" value="post" className={classes.submitpost} />
+            <button className={classes.submitpost}>Post</button>
           </div>
         </form>
       </dialog>
