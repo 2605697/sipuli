@@ -1,24 +1,28 @@
 {
   "Posts": [
     {
+      "username": "shitter tester",
+      "text": "Look at the funny cat comic : https://twitter.com/Nyazsche/status/2102927978456142319"
+    },
+    {
       "username": "tallImageTester",
       "text": "react",
       "attachment": {
-          "type": "img",
-          "src": "src/assets/PostImages/tall.png"
+        "type": "img",
+        "src": "src/assets/PostImages/tall.png"
       }
     },
     {
       "username": "wideImageTester",
       "text": "react",
       "attachment": {
-          "type": "img",
-          "src": "src/assets/PostImages/wide.jpg"
+        "type": "img",
+        "src": "src/assets/PostImages/wide.jpg"
       }
     },
     {
       "username": "User_5_numbers",
-      "text": "Trying out this new social media"
+      "text": "Trying out this new social media. I just found this video. I sure hope that the embed engine does not snitch on me : https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
       "username": "Another_user",
