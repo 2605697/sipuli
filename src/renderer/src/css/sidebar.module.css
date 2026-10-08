@@ -13,7 +13,7 @@
 .barComponent {
   height: 3em;
   background: var(--highlight);
-  color: var(--color-text);
+  color: white;
   border: none;
   font-weight: bold;
 }
@@ -30,7 +30,7 @@
 }
 
 .modal > form {
-  color: var(--color-text);
+  color: white;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -46,7 +46,7 @@
 }
 
 .close {
-  color: var(--color-text);
+  color: white;
   height: 2rem;
   width: 2rem;
   border: 1px solid black;
@@ -79,7 +79,7 @@
 
 .submitpost {
   font-weight: bold;
-  color: var(--color-text);
+  color: white;
   height: 2rem;
   border: 1px solid black;
   border-radius: 4px;
@@ -128,7 +128,7 @@
   width: 1em;
   left: 4px;
   bottom: 4px;
-  background-color: var(--color-text);
+  background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
