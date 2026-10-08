@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "date": "12.12.2026",
+      "title": "Osallistu sipulinleikkauskilpailuun!",
+      "location": "S-market Niinivaara Joensuu"
+    },
+    {
+      "date": "25.12.2026",
+      "title": "Joulumarkkinat keskustassa",
+      "location": "Keskusta"
+    }
+  ],
+  "ads": [
+    {
+      "title": "Hyvää salmiakkia",
+      "href": "https://s-kaupat.fi"
+    },
+    {
+      "title": "Mauton savustettu makkara",
+      "href": "https://s-kaupat.fi"
+    }
+  ]
+}

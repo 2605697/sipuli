@@ -2,6 +2,7 @@ import './assets/main.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import Sidebar from './components/Sidebar'
+import AdsBar from './components/AdsBar'
 import Feed from './components/Feed'
 import { OptionsProvider } from './components/Options'
 import { applyTheme, defaultTheme } from './themes'
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
       <OptionsProvider>
         <Sidebar />
         <Feed ></Feed>
+        <AdsBar />
       </OptionsProvider>
     </div>
   </StrictMode>
