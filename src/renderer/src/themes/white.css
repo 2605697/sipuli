@@ -1,0 +1,19 @@
+html[data-theme='white'] {
+  --body-background: #f2f1ee;
+  --background: #faf9f7;
+  --text-color: #1c1b19;
+  --on-highlight: #fff;
+
+  --highlight: #a34a99;
+  --highlight-bg: #f3e7f0;
+  --post-border: #ddd0da;
+  --sidebar-border: #ddd0da;
+  --link: #7d2f75;
+
+  --new-post-bg: #fff;
+  --new-post-border: #d6d3cd;
+  --new-post-field-bg: #fff;
+
+  --close-bg: #0001;
+  --close-hover: #0002;
+}
