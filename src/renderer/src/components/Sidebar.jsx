@@ -4,14 +4,34 @@ import { getIdentity } from '../identity.js'
 import { OptionsContext } from './Options.jsx'
 import { themes } from '../themes'
 
-function Sidebar({ }) {
-  let newPostDialog = useRef(null)
-  let openNewPost = () => newPostDialog.current.showModal()
-  let closeNewPost = () => newPostDialog.current.close()
+function Dialog({ setopen, children }) {
+  let dialog = useRef(null)
+  setopen(() => dialog.current.showModal())
+  let close = () => dialog.current.close()
+  return (
+    <dialog
+      className={classes.modal}
+      ref={dialog}
+      onClick={(ev) => {
+        // Close when clicking outside the modal
+        if (ev.target == dialog.current) close()
+      }}
+    >
+      <form method="dialog">
+        <div className={classes.header}>
+          <span></span>
+          <button className={classes.close}>X</button>
+        </div>
+        {children}
+      </form>
+    </dialog>
+  )
+}
 
-  let settingsDialog = useRef(null)
-  let openSettings = () => settingsDialog.current.showModal()
-  let closeSettings = () => settingsDialog.current.close()
+function Sidebar({ }) {
+  let openSettings = null
+  let openEvent = null
+  let openNewPost = null
 
   let [name, setName] = useState('')
   const { state, update } = useContext(OptionsContext)
@@ -23,97 +43,77 @@ function Sidebar({ }) {
   return (
     <div className={classes.root}>
       <div style={{ background: '#0000' /*placeholder element*/ }}></div>
-      <button onClick={openSettings} className={classes.barComponent}>
+      <button onClick={() => openSettings()} className={classes.barComponent}>
         Settings
       </button>
 
-      <button onClick={openNewPost} className={classes.barComponent}>
-        New post
+      <button onClick={() => openNewEvent()} className={classes.barComponent}>
+        New Event
       </button>
 
-      <dialog
-        className={classes.modal}
-        ref={settingsDialog}
-        onClick={(ev) => {
-          // Close when clicking outside the modal
-          if (ev.target == newPostDialog.current) closeSettings()
-        }}
-      >
-        <form method="dialog">
-          <div className={classes.header}>
-            <button className={classes.close}>X</button>
-          </div>
-          <span>
-            Auto translate posts :{' '}
-            <label className={classes.switch}>
-              <input
-                type="checkbox"
-                value={state.auto_translate}
-                onClick={toggleAutoTranslate}
-              ></input>
-              <span className={classes.slider}></span>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="theme">Theme : </label>
-            <select
-              name="theme"
-              id="theme"
-              value={state.theme}
-              onChange={(ev) => update({ theme: ev.target.value })}
-            >
-              {themes.map(({ id, label }) => (
-                <option key={id} value={id}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </span>
-          <span>
-            <label htmlFor="lang">Preferd language : </label>
-            <select name="lang" id="lang">
-              <option value="en">English (en)</option>
-              <option value="fi">Suomi (fi)</option>
-            </select>
-          </span>
-          <div className={classes.actions}>
-            <span></span>
-            <button className={classes.submitpost}>Save</button>
-          </div>
-        </form>
-      </dialog>
+      <button onClick={() => openNewPost()} className={classes.barComponent}>
+        New Post
+      </button>
 
-      <dialog
-        className={classes.modal}
-        ref={newPostDialog}
-        onClick={(ev) => {
-          // Close when clicking outside the modal
-          if (ev.target == newPostDialog.current) closeNewPost()
-        }}
-      >
-        <form method="dialog">
-          <div className={classes.header}>
-            <span>
-              <input
-                className={classes.code}
-                type="password"
-                placeholder="Identity code"
-                onChange={(ev) => {
-                  if (ev.target.value.length >= 4) setName(getIdentity(ev.target.value))
-                  else setName('')
-                }}
-              />{' '}
-              ({name || 'Code must be at least 4 characters'})
-            </span>
-            <button className={classes.close}>X</button>
-          </div>
-          <textarea className={classes.content} rows="10"></textarea>
-          <div className={classes.actions}>
-            <span></span>
-            <button className={classes.submitpost}>Post</button>
-          </div>
-        </form>
-      </dialog>
+      <Dialog setopen={(cb) => openSettings = cb}>
+        <span>
+          Auto translate posts :{' '}
+          <label className={classes.switch}>
+            <input
+              type="checkbox"
+              value={state.auto_translate}
+              onClick={toggleAutoTranslate}
+            ></input>
+            <span className={classes.slider}></span>
+          </label>
+        </span>
+        <span>
+          <label htmlFor="theme">Theme : </label>
+          <select
+            name="theme"
+            id="theme"
+            value={state.theme}
+            onChange={(ev) => update({ theme: ev.target.value })}
+          >
+            {themes.map(({ id, label }) => (
+              <option key={id} value={id}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </span>
+        <span>
+          <label htmlFor="lang">Preferd language : </label>
+          <select name="lang" id="lang">
+            <option value="en">English (en)</option>
+            <option value="fi">Suomi (fi)</option>
+          </select>
+        </span>
+        <div className={classes.actions}>
+          <span></span>
+          <button className={classes.submitpost}>Save</button>
+        </div>
+      </Dialog>
+
+      <Dialog setopen={(cb) => openNewPost = cb}>
+        <span>
+          <input
+            className={classes.code}
+            type="password"
+            placeholder="Identity code"
+            onChange={(ev) => {
+              if (ev.target.value.length >= 4) setName(getIdentity(ev.target.value))
+              else setName('')
+            }}
+          />{' '}
+          ({name || 'Code must be at least 4 characters'})
+        </span>
+        <textarea className={classes.content} rows="10"></textarea>
+        <div className={classes.actions}>
+          <span></span>
+          <button className={classes.submitpost}>Post</button>
+        </div>
+      </Dialog>
     </div>
   )
 }
