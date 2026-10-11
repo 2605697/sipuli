@@ -1,0 +1,44 @@
+.container {
+  display: grid;
+  grid-template-areas:
+  "img src"
+  "img title"
+  "img discription";
+  font-size: 0.8em;
+  border: 1px solid var(--post-border);
+  border-radius: 3px;
+  grid-template-columns: 1fr 4fr;
+}
+
+.container:hover{
+  cursor: pointer;
+}
+
+.img {
+  grid-area: img;
+  height: 10vh;
+  object-fit: cover;
+}
+
+
+.title {
+  padding: 3px;
+  font-weight: bold;
+  grid-area: title;
+  font-size: 1em;
+}
+
+
+.discription {
+  padding: 3px;
+  grid-area: discription;
+}
+
+.src{
+  grid-area: src;
+}
+
+.src img{
+  aspect-ratio: 1 / 1;
+  height: 20px;
+}

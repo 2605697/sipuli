@@ -1,4 +1,5 @@
 import TextRenderer from "./TextRenderer"
+import OpenGraph from "./OpenGraph";
 import Attachment from "./Attachments"
 import classes from "../css/post.module.css"
 import translate from "translate";
@@ -15,11 +16,10 @@ function Post({ content: { username, text, attachment } }) {
   let [translating, setTranslating] = useState(false);
   const { state } = useContext(OptionsContext);
 
-  const crude_link_grabber = /https?:\/\/.*(?<src>youtube|facebook|twitter|linkedin).com\/[\S]+/gm;
+  const crude_link_grabber = /https?:\/\/(?:.*\.)?(?<src>.*)\.(?:.*?)\/[\S]*/gm;
 
   //Take only one link from the string.
   let link = crude_link_grabber.exec(text);
-  console.log(link);
 
   //Use a effect to get the translated text
   useEffect(() => {
@@ -58,9 +58,8 @@ function Post({ content: { username, text, attachment } }) {
             (<YouTubeEmbed url={link[0]} className={classes.attachment} placeholderDisabled={true} />) :
             (link.groups['src'] == "twitter") ?
               (<XEmbed url={link[0]} className={classes.attachment} twitterTweetEmbedProps={{
-
               }} placeholderDisabled={true} />) :
-              (<div className={classes.attachment}></div>) : (<div className={classes.attachment}></div>)}
+              (<OpenGraph url={link[0]} src={link.groups['src']} className={classes.attachment}></OpenGraph>) : (<div className={classes.attachment}></div>)}
         <a className={classes.translate} onClick={toggle_translate}>{(state.auto_translate ? !useTranslated : useTranslated) ? "View original" : "Translate(using google translate)"} </a>
       </div>
     </>
