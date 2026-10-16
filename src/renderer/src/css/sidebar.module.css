@@ -27,6 +27,7 @@
   margin: auto; /* center, why not default here??? */
   width: 30rem;
   padding: 0;
+  border: none;
 }
 
 .modal > form {
@@ -65,10 +66,19 @@
   color: var(--text-color);
 }
 
-.modal > form> div> span> input {
+.modal > form> div> span> input,
+.modal select,
+.code {
   background:var(--new-post-field-bg);
-  border: 1px solid var(--new-post-border);
+  border: 1px solid var(--highlight-border);
   color: var(--text-color);
+}
+
+.modal select,
+.code {
+  height: 2rem;
+  padding: 0 .5rem;
+  border-radius: 4px;
 }
 
 .field {

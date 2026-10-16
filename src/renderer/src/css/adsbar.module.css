@@ -25,7 +25,7 @@
   border-radius: .4rem;
   background: var(--background);
   border: 1px solid var(--sidebar-border);
-  color: #eee;
+  color: var(--text-color);
 }
 
 .search:focus {

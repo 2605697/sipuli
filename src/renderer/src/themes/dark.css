@@ -1,4 +1,5 @@
 html[data-theme='dark'] {
+  color-scheme: dark;
   --body-background: #1b1b1f;
   --background: #161616;
   --text-color: rgba(255, 255, 245, 0.86);

@@ -1,4 +1,5 @@
 html[data-theme='white'] {
+  color-scheme: light;
   --body-background: #f2f1ee;
   --background: #faf9f7;
   --text-color: #1c1b19;
