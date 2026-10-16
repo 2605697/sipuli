@@ -71,6 +71,20 @@
   color: var(--text-color);
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.field > input {
+  height: 2rem;
+  padding: 0 .5rem;
+  background: var(--new-post-field-bg);
+  border: 1px solid var(--highlight-border);
+  color: var(--text-color);
+}
+
 .actions {
   display: flex;
   justify-content: space-between;

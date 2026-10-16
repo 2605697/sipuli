@@ -1,6 +1,21 @@
-import { events, ads } from "../mock_data/AdsBar.json";
+import { useState } from "react";
+import { events as mockEvents, ads } from "../mock_data/AdsBar.json";
 import classes from "../css/adsbar.module.css";
 import placeholder from "../assets/ad-placeholder.svg";
+
+let events = mockEvents;
+let setEventList = null;
+
+// Submit handler for the new event form in the sidebar
+export function submitNewEvent(ev) {
+  let form = ev.currentTarget;
+  let { title, date, location } = Object.fromEntries(new FormData(form));
+  // Convert to finnish date (yyyy-mm-dd -> dd.mm.yyyy)
+  date = date.split("-").reverse().join(".");
+  events = [...events, { date, title, location }];
+  setEventList(events);
+  form.reset();
+}
 
 function SearchBox({ }) {
   return (
@@ -19,11 +34,13 @@ function Event({ event: { date, title, location } }) {
 }
 
 function EventList({ }) {
+  let [eventList, setList] = useState(events);
+  setEventList = setList;
   return (
     <div className={classes.panel}>
       <h2 className={classes.panelheader}>Events</h2>
       {
-        events.map((event, index) => {
+        eventList.map((event, index) => {
           return (
             <Event key={index} event={event}></Event>
           )

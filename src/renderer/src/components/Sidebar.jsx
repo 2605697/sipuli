@@ -2,9 +2,10 @@ import { useState, useRef, useContext } from 'react'
 import classes from '../css/sidebar.module.css'
 import { getIdentity } from '../identity.js'
 import { OptionsContext } from './Options.jsx'
+import { submitNewEvent } from './AdsBar.jsx'
 import { themes } from '../themes'
 
-function Dialog({ setopen, children }) {
+function Dialog({ setopen, onSubmit, children }) {
   let dialog = useRef(null)
   setopen(() => dialog.current.showModal())
   let close = () => dialog.current.close()
@@ -17,10 +18,19 @@ function Dialog({ setopen, children }) {
         if (ev.target == dialog.current) close()
       }}
     >
-      <form method="dialog">
+      <form
+        method="dialog"
+        onSubmit={(ev) => {
+          // Ignore dialog close
+          if (ev.nativeEvent.submitter?.value != 'close' && onSubmit)
+            onSubmit(ev)
+        }}
+      >
         <div className={classes.header}>
           <span></span>
-          <button className={classes.close}>X</button>
+          <button className={classes.close} value="close" formNoValidate>
+            X
+          </button>
         </div>
         {children}
       </form>
@@ -30,7 +40,7 @@ function Dialog({ setopen, children }) {
 
 function Sidebar({ }) {
   let openSettings = null
-  let openEvent = null
+  let openNewEvent = null
   let openNewPost = null
 
   let [name, setName] = useState('')
@@ -92,6 +102,25 @@ function Sidebar({ }) {
         <div className={classes.actions}>
           <span></span>
           <button className={classes.submitpost}>Save</button>
+        </div>
+      </Dialog>
+
+      <Dialog setopen={(cb) => openNewEvent = cb} onSubmit={submitNewEvent}>
+        <label className={classes.field}>
+          Title
+          <input name="title" type="text" required />
+        </label>
+        <label className={classes.field}>
+          Date
+          <input name="date" type="date" required />
+        </label>
+        <label className={classes.field}>
+          Location
+          <input name="location" type="text" required />
+        </label>
+        <div className={classes.actions}>
+          <span></span>
+          <button className={classes.submitpost}>Create event</button>
         </div>
       </Dialog>
 
