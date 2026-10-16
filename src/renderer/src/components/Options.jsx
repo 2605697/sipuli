@@ -7,7 +7,8 @@ const reducer = (state, pair) => ({ ...state, ...pair })
 
 const initialState = {
   auto_translate: false,
-  theme: defaultTheme
+  theme: defaultTheme,
+  search: ''
 }
 
 export function OptionsProvider(props) {

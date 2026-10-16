@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { events as mockEvents, ads } from "../mock_data/AdsBar.json";
 import classes from "../css/adsbar.module.css";
 import placeholder from "../assets/ad-placeholder.svg";
+import { OptionsContext } from "./Options";
 
 let events = mockEvents;
 let setEventList = null;
@@ -18,8 +19,15 @@ export function submitNewEvent(ev) {
 }
 
 function SearchBox({ }) {
+  const { state, update } = useContext(OptionsContext);
   return (
-    <input className={classes.search} type="search" placeholder="Search" />
+    <input
+      className={classes.search}
+      type="search"
+      placeholder="Search"
+      value={state.search}
+      onChange={(ev) => update({ search: ev.target.value })}
+    />
   )
 }
 
