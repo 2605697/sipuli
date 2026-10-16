@@ -14,7 +14,7 @@ applyTheme(defaultTheme)
 // TODO: merge div here with the root div / or even use body
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div style={{ display: "flex", height: "100dvh", alignItems: "stretch" }}>
+    <div style={{ display: "flex", justifyContent: "space-between", height: "100dvh", alignItems: "stretch" }}>
       <OptionsProvider>
         <Sidebar />
         <Feed ></Feed>
