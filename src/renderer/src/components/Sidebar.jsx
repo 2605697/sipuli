@@ -3,6 +3,7 @@ import classes from '../css/sidebar.module.css'
 import { getIdentity } from '../identity.js'
 import { OptionsContext } from './Options.jsx'
 import { submitNewEvent } from './AdsBar.jsx'
+import { submitNewPost } from './Feed.jsx'
 import { themes } from '../themes'
 
 function Dialog({ setopen, onSubmit, children }) {
@@ -124,10 +125,11 @@ function Sidebar({ }) {
         </div>
       </Dialog>
 
-      <Dialog setopen={(cb) => openNewPost = cb}>
+      <Dialog setopen={(cb) => openNewPost = cb} onSubmit={submitNewPost}>
         <span>
           <input
             className={classes.code}
+            name="code"
             type="password"
             placeholder="Identity code"
             onChange={(ev) => {
@@ -137,7 +139,7 @@ function Sidebar({ }) {
           />{' '}
           ({name || 'Code must be at least 4 characters'})
         </span>
-        <textarea className={classes.content} rows="10"></textarea>
+        <textarea className={classes.content} name="text" rows="10" required></textarea>
         <div className={classes.actions}>
           <span></span>
           <button className={classes.submitpost}>Post</button>

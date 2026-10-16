@@ -9,17 +9,16 @@ import { applyTheme, defaultTheme } from './themes'
 
 applyTheme(defaultTheme)
 
-
-
 // TODO: merge div here with the root div / or even use body
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <div style={{ display: "flex", justifyContent: "space-between", width: "100vw", height: "100dvh", alignItems: "stretch" }}>
       <OptionsProvider>
         <Sidebar />
-        <Feed ></Feed>
+        <Feed />
         <AdsBar />
       </OptionsProvider>
     </div>
   </StrictMode>
 )
+
