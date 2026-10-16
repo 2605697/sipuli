@@ -11,6 +11,12 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
-    plugins: [react()]
+    plugins: [react()],
+    build: {
+      commonjsOptions: {
+        // Need this for react-twitter-embed
+        transformMixedEsModules: true
+      }
+    }
   }
 })
