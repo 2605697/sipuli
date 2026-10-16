@@ -1,23 +1,18 @@
-import { Posts } from "../mock_data/Posts.json";
-import Post from "./Post";
-import classes from "../css/feed.module.css";
-import { getIdentity } from "../identity.js";
-
-// TODO: eventually the data will just contain public identities
-Posts.forEach(p => p.username = getIdentity(p.username));
+import { useContext } from 'react'
+import { PostsContext } from './PostsContext'
+import Post from './Post'
+import classes from '../css/feed.module.css'
 
 function Feed() {
+  const { posts } = useContext(PostsContext)
+
   return (
     <div className={classes.feed_style}>
-      {
-        Posts.map((post, index) => {
-          return (
-            <Post key={index} content={post}></Post>
-          )
-        })
-      }
+      {posts.map((post, index) => {
+        return <Post key={index} content={post}></Post>
+      })}
     </div>
   )
 }
 
-export default Feed;
+export default Feed

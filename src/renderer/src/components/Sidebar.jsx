@@ -2,9 +2,10 @@ import { useState, useRef, useContext } from 'react'
 import classes from '../css/sidebar.module.css'
 import { getIdentity } from '../identity.js'
 import { OptionsContext } from './Options.jsx'
+import { PostsContext } from './PostsContext'
 import { themes } from '../themes'
 
-function Sidebar({ }) {
+function Sidebar() {
   let newPostDialog = useRef(null)
   let openNewPost = () => newPostDialog.current.showModal()
   let closeNewPost = () => newPostDialog.current.close()
@@ -14,7 +15,9 @@ function Sidebar({ }) {
   let closeSettings = () => settingsDialog.current.close()
 
   let [name, setName] = useState('')
+  let [postText, setPostText] = useState('')
   const { state, update } = useContext(OptionsContext)
+  const { addPost } = useContext(PostsContext)
 
   function toggleAutoTranslate() {
     update({ auto_translate: !state.auto_translate })
@@ -107,10 +110,25 @@ function Sidebar({ }) {
             </span>
             <button className={classes.close}>X</button>
           </div>
-          <textarea className={classes.content} rows="10"></textarea>
+          <textarea
+            className={classes.content}
+            rows="10"
+            value={postText}
+            onChange={(ev) => setPostText(ev.target.value)}
+          ></textarea>
           <div className={classes.actions}>
             <span></span>
-            <button className={classes.submitpost}>Post</button>
+            <button
+              className={classes.submitpost}
+              type="button"
+              onClick={() => {
+                addPost?.({ body: postText, username: name || undefined })
+                setPostText('')
+                closeNewPost()
+              }}
+            >
+              Post
+            </button>
           </div>
         </form>
       </dialog>
