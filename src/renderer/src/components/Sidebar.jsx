@@ -93,17 +93,7 @@ function Sidebar({ }) {
             ))}
           </select>
         </span>
-        <span>
-          <label htmlFor="lang">Preferd language : </label>
-          <select name="lang" id="lang">
-            <option value="en">English (en)</option>
-            <option value="fi">Suomi (fi)</option>
-          </select>
-        </span>
-        <div className={classes.actions}>
-          <span></span>
-          <button className={classes.submitpost}>Save</button>
-        </div>
+
       </Dialog>
 
       <Dialog setopen={(cb) => openNewEvent = cb} onSubmit={submitNewEvent}>

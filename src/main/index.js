@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, Menu, MenuItem } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -6,9 +6,17 @@ import { fetchOg } from './openGraphHandle'
 import { electron } from 'process'
 
 
+
+const menu = new Menu()
+
+Menu.setApplicationMenu(menu)
+
+
+let mainWindow = null
+
 function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
     show: false,
@@ -54,6 +62,19 @@ app.whenReady().then(() => {
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
+
+
+
+  const submenu = Menu.buildFromTemplate([
+    {
+      label: 'Focus window',
+      click: () => {
+        mainWindow.webContents.send('focus-search')
+      },
+      accelerator: 'CommandOrControl+F'
+    }
+  ])
+  menu.append(new MenuItem({ label: 'Custom Menu', submenu }))
 
 
 
