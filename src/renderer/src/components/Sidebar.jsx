@@ -45,26 +45,44 @@ function Sidebar({ }) {
   let openNewPost = null
 
   let [name, setName] = useState('')
+  let [menu, setMenuOpen] = useState(false)
   const { state, update } = useContext(OptionsContext)
 
   function toggleAutoTranslate() {
     update({ auto_translate: !state.auto_translate })
   }
 
+  let open = (cb) => () => {
+    setMenuOpen(false)
+    cb()
+  }
+
   return (
-    <div className={classes.root}>
-      <div style={{ background: '#0000' /*placeholder element*/ }}></div>
-      <button onClick={() => openSettings()} className={classes.barComponent}>
-        Settings
+    <>
+      <button
+        className={classes.hamburger}
+        onClick={() => setMenuOpen(!menu)}
+      >
+        ☰
       </button>
+      {menu && <div className={classes.backdrop} onClick={() => setMenuOpen(false)}></div>}
 
-      <button onClick={() => openNewEvent()} className={classes.barComponent}>
-        New Event
-      </button>
+      <div className={`${classes.root} ${menu ? classes.open : ''}`}>
+        <div style={{ background: '#0000' /*placeholder element*/ }}></div>
+        <button onClick={open(() => openSettings())} className={classes.barComponent}>
+          Settings
+        </button>
 
-      <button onClick={() => openNewPost()} className={classes.barComponent}>
-        New Post
-      </button>
+        <button onClick={open(() => openNewEvent())} className={classes.barComponent}>
+          New Event
+        </button>
+
+        <button onClick={open(() => openNewPost())} className={classes.barComponent}>
+          New Post
+        </button>
+      </div>
+
+      {/* Dialogs live outside the root so they still work while it is hidden */}
 
       <Dialog setopen={(cb) => openSettings = cb}>
         <span>
@@ -145,7 +163,7 @@ function Sidebar({ }) {
           <button className={classes.submitpost}>Post</button>
         </div>
       </Dialog>
-    </div>
+    </>
   )
 }
 

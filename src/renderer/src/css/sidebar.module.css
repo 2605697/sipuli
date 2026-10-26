@@ -10,6 +10,44 @@
   justify-content: end;
 }
 
+.hamburger, .backdrop { display: none; }
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+    flex-shrink: 0;
+    margin: .4rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    background: var(--highlight);
+    color: var(--on-highlight);
+    border: none;
+  }
+
+  .hamburger:hover { background: var(--highlight-bright); }
+
+  .root {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 7;
+  }
+
+  .open { display: flex; }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    z-index: 6;
+    inset: 0;
+    background: #0004;
+  }
+}
+
 .barComponent {
   height: 3em;
   background: var(--highlight);
