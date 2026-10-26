@@ -2,8 +2,8 @@ import { useState, useRef, useContext } from 'react'
 import classes from '../css/sidebar.module.css'
 import { getIdentity } from '../identity.js'
 import { OptionsContext } from './Options.jsx'
+import { PostsContext } from './PostsContext'
 import { submitNewEvent } from './AdsBar.jsx'
-import { submitNewPost } from './Feed.jsx'
 import { themes } from '../themes'
 
 function Dialog({ setopen, onSubmit, children }) {
@@ -47,6 +47,16 @@ function Sidebar({ }) {
   let [name, setName] = useState('')
   let [menu, setMenuOpen] = useState(false)
   const { state, update } = useContext(OptionsContext)
+  const { addPost } = useContext(PostsContext)
+
+  function submitNewPost(ev) {
+    let form = ev.currentTarget
+    let { code, text } = Object.fromEntries(new FormData(form))
+    let username = code.length >= 4 ? getIdentity(code) : 'Anonymous'
+    addPost({ body: text, username })
+    // Keep the identity code, only clear the post text
+    form.elements.text.value = ''
+  }
 
   function toggleAutoTranslate() {
     update({ auto_translate: !state.auto_translate })
