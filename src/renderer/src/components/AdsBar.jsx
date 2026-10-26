@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { events as mockEvents, ads } from "../mock_data/AdsBar.json";
 import classes from "../css/adsbar.module.css";
 import placeholder from "../assets/ad-placeholder.svg";
@@ -20,11 +20,19 @@ export function submitNewEvent(ev) {
 
 function SearchBox({ }) {
   const { state, update } = useContext(OptionsContext);
+  const ref = useRef(null);
+
+  window.keybinds.handleFocusSearch((event) => {
+    ref.current.focus()
+  })
+
+
   return (
     <input
+      ref={ref}
       className={classes.search}
       type="search"
-      placeholder="Search"
+      placeholder="Search Posts"
       value={state.search}
       onChange={(ev) => update({ search: ev.target.value })}
     />
