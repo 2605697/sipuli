@@ -38,6 +38,11 @@ function createWindow() {
   }
 }
 
+// Finnish locale makes the date picker in SideBar use a sane date format
+app.commandLine.appendSwitch("lang", "fi-FI")
+// Linux needs this instead
+process.env.LANGUAGE = "fi"
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
