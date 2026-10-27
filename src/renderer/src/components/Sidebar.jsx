@@ -69,26 +69,31 @@ function Sidebar({ }) {
 
   return (
     <>
-      <button
-        className={classes.hamburger}
-        onClick={() => setMenuOpen(!menu)}
-      >
-        ☰
-      </button>
+      <div className={classes.toolbar}>
+        <button
+          className={classes.hamburger}
+          onClick={() => setMenuOpen(!menu)}
+        >
+          ☰
+        </button>
+        <button title="Settings" onClick={open(() => openSettings())} className={classes.hamburger}>⚙</button>
+        <button title="New Event" onClick={open(() => openNewEvent())} className={classes.hamburger} style={{paddingTop: "5px"}}>🗓</button>
+        <button title="New Post" onClick={open(() => openNewPost())} className={classes.hamburger} style={{paddingTop: "5px"}}>🖉</button>
+      </div>
       {menu && <div className={classes.backdrop} onClick={() => setMenuOpen(false)}></div>}
 
       <div className={`${classes.root} ${menu ? classes.open : ''}`}>
         <div style={{ background: '#0000' /*placeholder element*/ }}></div>
         <button onClick={open(() => openSettings())} className={classes.barComponent}>
-          Settings
+         ⚙ Settings
         </button>
 
         <button onClick={open(() => openNewEvent())} className={classes.barComponent}>
-          New Event
+         🗓 New Event
         </button>
 
         <button onClick={open(() => openNewPost())} className={classes.barComponent}>
-          New Post
+         🖉 New Post
         </button>
       </div>
 

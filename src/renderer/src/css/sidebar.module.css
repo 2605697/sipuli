@@ -10,9 +10,14 @@
   justify-content: end;
 }
 
-.hamburger, .backdrop { display: none; }
+.toolbar, .backdrop { display: none; }
 
 @media (max-width: 900px) {
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+  }
+
   .hamburger {
     display: block;
     flex-shrink: 0;
