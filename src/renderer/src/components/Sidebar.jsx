@@ -84,17 +84,19 @@ function Sidebar({ }) {
 
       <div className={`${classes.root} ${menu ? classes.open : ''}`}>
         <div style={{ background: '#0000' /*placeholder element*/ }}></div>
-        <button onClick={open(() => openSettings())} className={classes.barComponent}>
-          <span>⚙ Settings</span>
-        </button>
+        <div className={classes.barButtons}>
+          <button onClick={open(() => openSettings())} className={classes.barComponent}>
+            <span>⚙</span><span>Settings</span>
+          </button>
 
-        <button onClick={open(() => openNewEvent())} className={classes.barComponent}>
-          <span>🗓 New Event</span>
-        </button>
+          <button onClick={open(() => openNewEvent())} className={classes.barComponent}>
+            <span>🗓</span><span>New Event</span>
+          </button>
 
-        <button onClick={open(() => openNewPost())} className={classes.barComponent}>
-          <span>🖉 New Post</span>
-        </button>
+          <button onClick={open(() => openNewPost())} className={classes.barComponent}>
+            <span>🖉</span><span>New Post</span>
+          </button>
+        </div>
       </div>
 
       {/* Dialogs live outside the root so they still work while it is hidden */}
