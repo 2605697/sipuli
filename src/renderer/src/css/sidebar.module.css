@@ -58,7 +58,13 @@
   background: var(--highlight);
   color: var(--on-highlight);
   border: none;
+  padding-left: 4em;
+  float: right;
   font-weight: bold;
+}
+
+.barComponent span{
+  float: left;
 }
 
 .barComponent:hover {

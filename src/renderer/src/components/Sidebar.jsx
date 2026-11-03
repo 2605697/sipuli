@@ -77,23 +77,23 @@ function Sidebar({ }) {
           ☰
         </button>
         <button title="Settings" onClick={open(() => openSettings())} className={classes.hamburger}>⚙</button>
-        <button title="New Event" onClick={open(() => openNewEvent())} className={classes.hamburger} style={{paddingTop: "5px"}}>🗓</button>
-        <button title="New Post" onClick={open(() => openNewPost())} className={classes.hamburger} style={{paddingTop: "5px"}}>🖉</button>
+        <button title="New Event" onClick={open(() => openNewEvent())} className={classes.hamburger} style={{ paddingTop: "5px" }}>🗓</button>
+        <button title="New Post" onClick={open(() => openNewPost())} className={classes.hamburger} style={{ paddingTop: "5px" }}>🖉</button>
       </div>
       {menu && <div className={classes.backdrop} onClick={() => setMenuOpen(false)}></div>}
 
       <div className={`${classes.root} ${menu ? classes.open : ''}`}>
         <div style={{ background: '#0000' /*placeholder element*/ }}></div>
         <button onClick={open(() => openSettings())} className={classes.barComponent}>
-         ⚙ Settings
+          <span>⚙ Settings</span>
         </button>
 
         <button onClick={open(() => openNewEvent())} className={classes.barComponent}>
-         🗓 New Event
+          <span>🗓 New Event</span>
         </button>
 
         <button onClick={open(() => openNewPost())} className={classes.barComponent}>
-         🖉 New Post
+          <span>🖉 New Post</span>
         </button>
       </div>
 
